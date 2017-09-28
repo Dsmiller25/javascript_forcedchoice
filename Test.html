@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+    img {
+  width: 850px;
+}
+    </style>
+    <title>My experiment</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="jspsych-5.0.3/jspsych.js"></script>
+    <script src="jspsych-5.0.3/plugins/jspsych-text.js"></script>
+    <script src="jspsych-5.0.3/plugins/jspsych-categorize.js"></script>
+    <link href="jspsych-5.0.3/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  </head>
+  <body>
+  </body>
+  <script>
+
+
+
+    /* define welcome message block */
+    var welcome_block = {
+      type: "text",
+      text: "<center> Welcome to the experiment. Press any key to begin. </center>"
+    };
+
+    /* define instructions block */
+    var instructions_block = {
+      type: "text",
+      text: "<p> In this experiment, two buisness persons faces will be presented " +
+      "along with a critera square.</p><p> The square will either be blue for Popularity " +
+      "or red for Competence.</p><p> Using the left and right arrow keys select the person you "+
+      "believe to be better in the selected criteria.</p><p> During the training portion you will " +
+      "recieve feedback.</p><p> Through trial and error learn the relationship between " +
+      "the 16 buisnesspersons faces.</p><p> During the test portion you will not recieve " +
+      "feedback.</p><p> When you are ready press any key to proceed.</p>"
+    };
+
+    var training_block={
+      type: "text",
+      text: "<center> <big>Training Phase<p>Press any button to continue</p></big></center>"
+    };
+
+    var test_block={
+      type: "text",
+      text: "<center><big>Test Phase<p>Press any button to continue</p></big></center>"
+    };
+
+    var finish_block={
+      type:"text",
+      text: "<center><big>Thank you for participating in our experiment.</big></center>"
+    }
+
+
+  function getSubjectData() {
+
+    var trials = jsPsych.data.getTrialsOfType('categorize');
+
+    var sum_rt = 0;
+    var correct_trial_count = 0;
+    var correct_rt_count = 0;
+    for (var i = 4; i < trials.length; i++) {
+      if (trials[i].correct == true) {
+        correct_trial_count++;
+        }
+      }
+    return {
+      accuracy: Math.floor(correct_trial_count / (trials.length-4) * 100)
+    }
+  }
+
+  var debrief_block = {
+    type: "text",
+    text: function() {
+      var subject_data = getSubjectData();
+      return "<p>You responded correctly on "+subject_data.accuracy+"% of " +
+      "the trials.</p> Press any key to complete the experiment. Thank you!</p>";
+    }
+  };
+
+    var t1 = {
+        type: 'categorize',
+        stimulus: "img/trialImg/t1.png",
+        key_answer: 37,
+        choices: [37, 39],
+        correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+        incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+        is_html: false,
+        timing_stim: 2000,
+        timing_response: 2000,
+    };
+
+    var t2 = {
+        type: 'categorize',
+        stimulus: 'img/trialImg/t2.png',
+        key_answer: 39,
+        choices: [37, 39],
+        correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+        incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+        is_html: false,
+        timing_stim: 2000,
+        timing_response: 2000,
+    };
+
+    var t3 = {
+        type: 'categorize',
+        stimulus: "img/trialImg/t3.png",
+        key_answer: 39,
+        choices: [37, 39],
+        correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+        incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+        is_html: false,
+        timing_stim: 2000,
+        timing_response: 2000,
+    };
+
+    var t4 = {
+        type: 'categorize',
+        stimulus: 'img/trialImg/t4.png',
+        key_answer: 37,
+        choices: [37, 39],
+        correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+        incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+        is_html: false,
+        timing_stim: 2000,
+        timing_response: 2000,
+    };
+
+    var t5 = {
+        type: 'categorize',
+        stimulus: "img/trialImg/t1.png",
+        key_answer: 37,
+        choices: [37, 39],
+        correct_text: '',
+        incorrect_text:'',
+        is_html: false,
+        timing_stim: 2000,
+        timing_response: 2000,
+    };
+
+    var t6 = {
+        type: 'categorize',
+        stimulus: 'img/trialImg/t2.png',
+        key_answer: 39,
+        choices: [37, 39],
+        correct_text: "",
+        incorrect_text: "",
+        is_html: false,
+        timing_stim: 2000,
+        timing_response: 2000,
+    };
+
+    var t7 = {
+        type: 'categorize',
+        stimulus: "img/trialImg/t3.png",
+        key_answer: 39,
+        choices: [37, 39],
+        correct_text: "",
+        incorrect_text: "",
+        is_html: false,
+        timing_stim: 2000,
+        timing_response: 2000,
+    };
+
+    var t8 = {
+        type: 'categorize',
+        stimulus: 'img/trialImg/t4.png',
+        key_answer: 37,
+        choices: [37, 39],
+        correct_text: "",
+        incorrect_text: "",
+        is_html: false,
+        timing_stim: 2000,
+        timing_response: 2000,
+    };
+
+    /* create experiment definition array */
+    var timeline = [];
+    timeline.push(welcome_block);
+    timeline.push(instructions_block);
+    timeline.push(training_block);
+    timeline.push(t1,t2,t3,t4);
+    timeline.push(test_block);
+    timeline.push(t5,t6,t7,t8);
+    timeline.push(debrief_block);
+
+
+    /* start the experiment */
+    jsPsych.init({
+      timeline: timeline,
+      on_finish: function() {
+        jsPsych.data.displayData('csv');
+      }
+    });
+
+  </script>
+</html>
