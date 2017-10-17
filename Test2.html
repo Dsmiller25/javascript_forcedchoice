@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+    img {
+        width: 450px;
+    }
+    </style>
+    <title>My experiment</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="jspsych-5.0.3/jspsych.js"></script>
+    <script src="jspsych-5.0.3/plugins/jspsych-text.js"></script>
+    <script src="jspsych-5.0.3/plugins/jspsych-single-stim.js"></script>
+    <script src="jspsych-5.0.3/plugins/jspsych-categorize.js"></script>
+    <link href="jspsych-5.0.3/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  </head>
+  <body>
+  </body>
+  <script>
+
+  /* define welcome message block */
+  var welcome_block = {
+    type: "text",
+    text: "<center> Welcome to the experiment. Press any key to begin. </center>"
+  };
+
+  var face1 = {
+    type: 'single-stim',
+    stimulus: 'img/35.jpg',
+    is_html: false,
+    timing_response: 2000,
+    response_ends_trial: false
+};
+
+var fix_cross=  {
+    type: 'single-stim',
+    stimulus: 'img/fixcross.jpg',
+    is_html: false,
+    timing_response: 750,
+    response_ends_trial: false
+};
+
+var criteria= {
+  type: 'single-stim',
+  stimulus: 'img/Comp.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+};
+
+var decision = {
+    type: 'categorize',
+    stimulus: 'img/34.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+};
+
+
+
+/* create experiment definition array */
+var timeline = [];
+timeline.push(welcome_block);
+timeline.push(criteria,fix_cross,face1,fix_cross,decision)
+
+
+/* start the experiment */
+jsPsych.init({
+  timeline: timeline
+});
+
+</script>
+</html?
