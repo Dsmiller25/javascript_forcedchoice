@@ -1,0 +1,601 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+    img {
+        width: 450px;
+    }
+    </style>
+    <title>My experiment</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="papaparse.min.js"></script>
+    <script src="jspsych-5.0.3/jspsych.js"></script>
+    <script src="jspsych-5.0.3/plugins/jspsych-text.js"></script>
+    <script src="jspsych-5.0.3/plugins/jspsych-single-stim.js"></script>
+    <script src="jspsych-5.0.3/plugins/jspsych-categorize.js"></script>
+    <link href="jspsych-5.0.3/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  </head>
+  <body>
+  </body>
+  <script>
+
+  /* define welcome message block */
+  var welcome_block = {
+    type: "text",
+    text: "<center><big> Welcome to the experiment. Press any key to begin.</big></center>"
+  };
+
+  var fix_cross=  {
+      type: 'single-stim',
+      stimulus: 'img/fixcross.jpg',
+      is_html: false,
+      timing_response: function(){
+      return Math.floor(Math.random() * 1000) + 1000;
+    },
+      response_ends_trial: false
+  };
+
+// Criteria
+  var criteriac= {
+  type: 'single-stim',
+  stimulus: 'img/Comp.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var criteriap= {
+  type: 'single-stim',
+  stimulus: 'img/Pop.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+// First face image
+  var face1 = {
+  type: 'single-stim',
+  stimulus: 'img/1.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var face2 = {
+  type: 'single-stim',
+  stimulus: 'img/2.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var face3 = {
+  type: 'single-stim',
+  stimulus: 'img/3.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var face4 = {
+  type: 'single-stim',
+  stimulus: 'img/4.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var face5 = {
+  type: 'single-stim',
+  stimulus: 'img/5.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var face6 = {
+  type: 'single-stim',
+  stimulus: 'img/6.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var face7 = {
+  type: 'single-stim',
+  stimulus: 'img/7.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var face8 = {
+  type: 'single-stim',
+  stimulus: 'img/8.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var face9 = {
+  type: 'single-stim',
+  stimulus: 'img/9.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var face10 = {
+  type: 'single-stim',
+  stimulus: 'img/10.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var face11 = {
+  type: 'single-stim',
+  stimulus: 'img/11.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var face12 = {
+  type: 'single-stim',
+  stimulus: 'img/12.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var face13 = {
+  type: 'single-stim',
+  stimulus: 'img/13.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var face14 = {
+  type: 'single-stim',
+  stimulus: 'img/14.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var face15 = {
+  type: 'single-stim',
+  stimulus: 'img/15.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+  var face16 = {
+  type: 'single-stim',
+  stimulus: 'img/16.jpg',
+  is_html: false,
+  timing_response: 2000,
+  response_ends_trial: false
+  };
+
+//Decision choice dl=image with correct ansswer being left dr=image with correct answer being right
+  var dl1 = {
+    type: 'categorize',
+    stimulus: 'img/1.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dl2 = {
+    type: 'categorize',
+    stimulus: 'img/2.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dl3 = {
+    type: 'categorize',
+    stimulus: 'img/3.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dl4 = {
+    type: 'categorize',
+    stimulus: 'img/4.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dl5 = {
+    type: 'categorize',
+    stimulus: 'img/5.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dl6 = {
+    type: 'categorize',
+    stimulus: 'img/6.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dl7 = {
+    type: 'categorize',
+    stimulus: 'img/7.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dl8 = {
+    type: 'categorize',
+    stimulus: 'img/8.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dl9 = {
+    type: 'categorize',
+    stimulus: 'img/9.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dl10 = {
+    type: 'categorize',
+    stimulus: 'img/10.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dl11 = {
+    type: 'categorize',
+    stimulus: 'img/11.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dl12 = {
+    type: 'categorize',
+    stimulus: 'img/12.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dl13 = {
+    type: 'categorize',
+    stimulus: 'img/13.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dl14 = {
+    type: 'categorize',
+    stimulus: 'img/14.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dl15 = {
+    type: 'categorize',
+    stimulus: 'img/15.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dl16 = {
+    type: 'categorize',
+    stimulus: 'img/16.jpg',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+
+  var dr1 = {
+    type: 'categorize',
+    stimulus: 'img/1.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dr2 = {
+    type: 'categorize',
+    stimulus: 'img/2.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dr3 = {
+    type: 'categorize',
+    stimulus: 'img/3.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dr4 = {
+    type: 'categorize',
+    stimulus: 'img/4.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dr5 = {
+    type: 'categorize',
+    stimulus: 'img/5.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dr6 = {
+    type: 'categorize',
+    stimulus: 'img/6.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dr7 = {
+    type: 'categorize',
+    stimulus: 'img/7.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dr8 = {
+    type: 'categorize',
+    stimulus: 'img/8.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dr9 = {
+    type: 'categorize',
+    stimulus: 'img/9.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dr10 = {
+    type: 'categorize',
+    stimulus: 'img/10.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dr11 = {
+    type: 'categorize',
+    stimulus: 'img/11.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dr12 = {
+    type: 'categorize',
+    stimulus: 'img/12.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dr13 = {
+    type: 'categorize',
+    stimulus: 'img/13.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dr14 = {
+    type: 'categorize',
+    stimulus: 'img/14.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dr15 = {
+    type: 'categorize',
+    stimulus: 'img/15.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+  var dr16 = {
+    type: 'categorize',
+    stimulus: 'img/16.jpg',
+    key_answer: 39,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+  };
+
+//var list = [criteriac,criteriap,face1,face2,face3,face4,face5,face6,face7,face8,face9,face10,face11,face12,face13,face14,face15,face16,dl1,dl2,dl3,dl4,dl5,dl6,dl7,dl8,dl9,dl10,dl11,dl12,dl13,dl14,dl15,dl16,dr1,dr2,dr3,dr4,dr5,dr6,dr7,dr8,dr9,dr10,dr11,dr12,dr13,dr14,dr15,dr16];
+
+  var list;
+  Papa.parse("JS-Scheduler.csv", {
+	download: true,
+	header: true,
+	skipEmptyLines: true,
+        complete: function(results) {
+		  list = results;
+          console.log(list);
+	  //console.log(data.data[1]);
+        }
+      });
+
+/* create experiment definition array */
+var timeline = [];
+timeline.push(welcome_block);
+for (i=0;i<16;i++){
+f=i+2;dl=33-i;dr=49-i
+timeline.push(list[0],fix_cross,list[f],fix_cross,list[dl]);
+timeline.push(list[1],fix_cross,list[f],fix_cross,list[dr]);
+}
+
+
+/* start the experiment */
+jsPsych.init({
+  timeline: timeline,
+  default_iti:10,
+});
+
+</script>
+</html?
