@@ -1,0 +1,33 @@
+.box-bottom{
+    border: 2px solid black;
+    margin: 20px;
+    display:inline-block;
+    height:15%;
+    width:15%;
+    position:relative;
+    top: 250px;
+  }
+
+.box-left{
+    border: 2px solid black;
+    margin: 20px;
+    display:inline-block;
+    height:15%;
+    width:15%;
+    position: relative;
+    left:15%;
+  }
+
+.box-right {
+  border: 2px solid black;
+  margin: 20px;
+  display:inline-block;
+  height:15%;
+  width:15%;
+  position: relative;
+  left:40%;
+}
+
+body{
+  background-color: Whitesmoke;
+}

@@ -1,0 +1,21 @@
+var decision = {
+    type: 'categorize',
+    stimulus: '',
+    key_answer: 37,
+    choices: [37, 39],
+    correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
+    incorrect_text: "<p class='prompt'><center><strong><big>Incorrect<big><strong><center></p>",
+    is_html: false,
+    timing_stim: 2000,
+    timing_response: 2000,
+};
+
+var img=['img/33.jpg','img/34.jpg','img/35.jpg']
+var choice=[];
+
+for(i=0; i<3; i++){
+    decision.stimulus= img[i];
+    choice[i]=decision;
+    console.log(choice[i]);
+  }
+//console.log(choice);

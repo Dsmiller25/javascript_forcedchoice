@@ -21,8 +21,13 @@
   /* define welcome message block */
   var welcome_block = {
     type: "text",
-    text: "<center><large> Welcome to the experiment. Press any key to begin. <large></center>"
+    text: "<center> Welcome to the experiment. Press any key to begin. </center>"
   };
+
+  var imagea=['img/33.jpg','img/34.jpg','img/35.jpg','img/39.jpg'];
+  var imageb=['img/39.jpg','img/35.jpg','img/34.jpg','img/33.jpg'];
+  var imagec=['img/Comp.jpg','img/Pop.jpg','img/Pop.jpg','img/Comp.jpg'];
+
 
   var face1 = {
     type: 'single-stim',
@@ -36,7 +41,7 @@ var fix_cross=  {
     type: 'single-stim',
     stimulus: 'img/fixcross.jpg',
     is_html: false,
-    timing_response: 1000,
+    timing_response: 750,
     response_ends_trial: false
 };
 
@@ -50,7 +55,7 @@ var criteria= {
 
 var decision = {
     type: 'categorize',
-    stimulus: '',
+    stimulus: "img/34.jpg",
     key_answer: 37,
     choices: [37, 39],
     correct_text: "<p class='prompt'><center><strong><big>Correct<big><strong><center></p>",
@@ -60,27 +65,25 @@ var decision = {
     timing_response: 2000,
 };
 
+var trial = {
+  for (var i = 0; i < imagea.length; i++) {
+    face1.stimulus=imagea[i],
+    decision.stimulus=imageb[i],
+    criteria.stimulus=imagec[i],
+    timeline.push(welcome_block,criteria,fix_cross,face1,fix_cross,decision)
+  };
 
-var choice=[];
-var img= ['img/33.jpg','img/34.jpg','img/35.jpg'];
 
 
 /* create experiment definition array */
 var timeline = [];
 timeline.push(welcome_block);
-timeline.push(face1);
-for(i=0; i<3; i++){
-    decision.stimulus = img[i];
-    choice[i]= decision;
-}
-for (i=0; i<3;i++){
-timeline.push(choice[i]);
-}
+timeline.push(trial)
+
 
 /* start the experiment */
 jsPsych.init({
-  timeline: timeline,
-  default_iti:10,
+  timeline: timeline
 });
 
 </script>
