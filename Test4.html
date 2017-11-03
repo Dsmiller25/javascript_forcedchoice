@@ -17,9 +17,11 @@
   </head>
   <body>
   </body>
-  <script>
 
+  <script>
+  
   /* define welcome message block */
+  
   var welcome_block = {
     type: "text",
     text: "<center><big> Welcome to the experiment. Press any key to begin.</big></center>"
@@ -569,51 +571,85 @@
 
 //var list = [criteriac,criteriap,face1,face2,face3,face4,face5,face6,face7,face8,face9,face10,face11,face12,face13,face14,face15,face16,dl1,dl2,dl3,dl4,dl5,dl6,dl7,dl8,dl9,dl10,dl11,dl12,dl13,dl14,dl15,dl16,dr1,dr2,dr3,dr4,dr5,dr6,dr7,dr8,dr9,dr10,dr11,dr12,dr13,dr14,dr15,dr16];
 
-  //var list;
+  var list = [];
   var timeline = [];
   timeline.push(welcome_block);
 
+  /*var csvFile = new XMLHttpRequest();
+  csvFile.open("GET", "file://C:\Users\Douglas\Desktop\School\School\Coglab\Programming\JavaScript\Experiments - Test\JS-Scheduler.csv", true);
+  var fileName = csvFile.*/
+
 	  function grabCsv(data){
-	    var face1 = "face1";
-	    //var list = [ [], [], [], [], [] ];
 		for(i=0; i<data.length; i++){
 		  data[i][1] = data[i][1].replace("1", "criteriac");
 		  data[i][1] = data[i][1].replace("2", "criteriap");
 		  data[i][2] = data[i][2].replace(data[i][2], "face" + data[i][2]);
-		  console.log(data[i]);
-		  //data[i][2] = face1.concat(data[i][2]);
 		}
 		
-		for (i=0;i<data.length;i++){
-			//f=i+2;dl=33-i;dr=49-i
-			timeline.push(data[i][1],fix_cross,data[i][2],fix_cross,data[i][3]);
-			//timeline.push(data[i][1],fix_cross,data[i][2],fix_cross,list[dr]);
+		var curIndex = data.length, tempVal, randIndex;
+		
+		//for(curIndex = data.length; curIndex > 0; curIndex--){
+		while(curIndex >= 0){
+		  randIndex = Math.floor(Math.random() * curIndex);
+		  
+		  //if(randIndex < data.length){
+		  tempVal = data[curIndex];
+		  data[curIndex] = data[randIndex];
+		  data[randIndex] = tempVal;
+		  console.log(tempVal);
+		  if(typeof tempVal == 'undefined'){
+		    console.log(randIndex);
+			console.log(data[curIndex]);
+			console.log(data[randIndex]);
+		  }
+		  curIndex--;
+		  //}
 		}
-		//console.log(data[1]);
+		
+		for(i=0; i < data.length; i++){
+		  if(data[i] == 'undefined')
+		    console.log(i);
+		}
+		
+		console.log(data[0]);
+		console.log(data);
 		console.log(timeline);
+		console.log(data.length);
+		for (i=0; i < data.length; i++){
+		//console.log(i);
+			timeline.push(eval(data[i][1]),fix_cross,eval(data[i][2]),fix_cross,eval(data[i][3]));
+		}
+		console.log(timeline);
+		
+		jsPsych.init({
+			timeline: timeline,
+			default_iti:10,
+		});
+		
 	  }
 	  
 	  function parseData(url, callBack){
       Papa.parse(url, {
 	    download: true,
-	    //header: true,
 	    skipEmptyLines: true,
         complete: function(results) {
 		  callBack(results.data);
         }
       });
 	  }
-	  
 	  parseData("JS-Scheduler.csv", grabCsv);
-
+	  
 /* create experiment definition array */
-
-
+/*var timeline = [];
+timeline.push(welcome_block);
+for (i=0;i<16;i++){
+f=i+2;dl=33-i;dr=49-i
+timeline.push(list[0],fix_cross,list[f],fix_cross,list[dl]);
+timeline.push(list[1],fix_cross,list[f],fix_cross,list[dr]);
+}*/
+//console.log(timeline);
 /* start the experiment */
-jsPsych.init({
-  timeline: timeline,
-  default_iti:10,
-});
+
 
 </script>
 </html?
